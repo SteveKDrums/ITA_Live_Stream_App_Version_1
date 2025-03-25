@@ -47,12 +47,13 @@ function allRings() {
 }
 
 function enterFullscreen() {
-  if (!document.fullscreenElement) {
+  const wrapper = document.getElementById('videoWrapper');
+  if (!document.fullscreenElement && wrapper) {
     if (wrapper.requestFullscreen) {
       wrapper.requestFullscreen();
-    } else if (wrapper.webkitRequestFullscreen) {
+    } else if (wrapper.webkitRequestFullscreen) { // Safari
       wrapper.webkitRequestFullscreen();
-    } else if (wrapper.msRequestFullscreen) {
+    } else if (wrapper.msRequestFullscreen) { // IE/Edge
       wrapper.msRequestFullscreen();
     }
   }
