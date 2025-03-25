@@ -36,18 +36,20 @@ function switchCam(cam) {
       player.style.left = '-100%';
       break;
   }
-  enterFullscreen();
+  enterFullscreen();  // Trigger full-screen after switching camera
   hideMenuSoon();
 }
 
 function allRings() {
   setFullView();
-  enterFullscreen();
+  enterFullscreen();  // Trigger full-screen when showing all rings
   hideMenuSoon();
 }
 
 function enterFullscreen() {
   const wrapper = document.getElementById('videoWrapper');
+
+  // Only enter fullscreen if not already in fullscreen mode
   if (!document.fullscreenElement && wrapper) {
     if (wrapper.requestFullscreen) {
       wrapper.requestFullscreen();
@@ -55,6 +57,13 @@ function enterFullscreen() {
       wrapper.webkitRequestFullscreen();
     } else if (wrapper.msRequestFullscreen) { // IE/Edge
       wrapper.msRequestFullscreen();
+    }
+  }
+
+  // Mobile-specific full-screen entry
+  if (window.innerWidth <= 768) {  // Mobile screen size (adjust if necessary)
+    if (wrapper.requestFullscreen) {
+      wrapper.requestFullscreen();
     }
   }
 }
