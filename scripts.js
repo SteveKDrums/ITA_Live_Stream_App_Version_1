@@ -48,25 +48,35 @@ function allRings() {
 
 function enterFullscreen() {
   const wrapper = document.getElementById('videoWrapper');
-
-  // Only enter fullscreen if not already in fullscreen mode
+  
+  // Trigger full-screen on mobile and desktop
   if (!document.fullscreenElement && wrapper) {
     if (wrapper.requestFullscreen) {
-      wrapper.requestFullscreen();
+      wrapper.requestFullscreen(); // Standard full-screen
     } else if (wrapper.webkitRequestFullscreen) { // Safari
       wrapper.webkitRequestFullscreen();
     } else if (wrapper.msRequestFullscreen) { // IE/Edge
       wrapper.msRequestFullscreen();
     }
-  }
 
-  // Mobile-specific full-screen entry
-  if (window.innerWidth <= 768) {  // Mobile screen size (adjust if necessary)
-    if (wrapper.requestFullscreen) {
-      wrapper.requestFullscreen();
+    // Force full-screen mode on mobile specifically
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        if (wrapper.requestFullscreen) {
+          wrapper.requestFullscreen();
+        }
+      }, 100);
     }
   }
 }
+
+// Event listener to handle when exiting full-screen
+document.addEventListener('fullscreenchange', (event) => {
+  if (!document.fullscreenElement) {
+    // Reset the video player and layout when exiting full-screen
+    setFullView();
+  }
+});
 
 function toggleMenu() {
   ringMenu.classList.toggle('visible');
