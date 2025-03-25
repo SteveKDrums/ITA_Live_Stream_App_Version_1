@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.video-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 4px solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  border: none;
+  z-index: 1;
+}
+
+/* Floating "👁️ Select Ring" button */
+.toggle-menu-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+  background: #0d6efd;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-menu-btn:hover {
+  background: #0a58ca;
+}
+
+/* Pop-up ring menu */
+.menu-popup {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 12px;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  min-width: 160px;
+  align-items: stretch;
+  z-index: 4;
+}
+
+.menu-popup.visible {
+  display: flex;
+}
+
+.menu-popup button {
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-popup button:hover {
+  background: #0a58ca;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .toggle-menu-btn {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .menu-popup button {
+    font-size: 0.85rem;
+  }
+}

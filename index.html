@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ITA TKD Live Stream</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h1>ITA Taekwon-Do Live Stream: Choose a Ring View</h1>
+
+  <div class="video-wrapper" id="videoWrapper">
+
+    <iframe
+      id="ytplayer"
+      src="https://www.youtube.com/embed/fYssdKnGEzE?autoplay=0&mute=0&controls=1&vq=hd1080"
+      allowfullscreen
+      allow="autoplay; encrypted-media"
+    ></iframe>
+
+    <!-- Floating Button with icon -->
+    <button class="toggle-menu-btn" onclick="toggleMenu()">
+      👁️ Select Ring
+    </button>
+
+    <!-- Pop-up Ring Menu -->
+    <div class="menu-popup" id="ringMenu">
+      <button onclick="switchCam(1)">View Ring 1</button>
+      <button onclick="switchCam(2)">View Ring 2</button>
+      <button onclick="switchCam(3)">View Ring 3</button>
+      <button onclick="switchCam(4)">View Ring 4</button>
+      <button onclick="allRings()">Show All Rings</button>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+
+</body>
+</html>
